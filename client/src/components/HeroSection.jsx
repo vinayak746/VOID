@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const HeroSection = () => {
   const navigate = useNavigate();
   return (
-    <div className='flex flex-col items-start justify-center gap-4 px-6 md:px-16 lg:px-36 bg-[url("backgroundImage.png")] bg-cover bg-center h-screen '>
+    <div className='flex flex-col items-start justify-center gap-4 px-6 md:px-16 lg:px-36 bg-[url("/backgroundImage.png")] bg-cover bg-center h-screen '>
       <img
         src={assets.marvelLogo}
         alt="marvel logo"
@@ -26,7 +26,7 @@ const HeroSection = () => {
           2h 8m
         </div>
       </div>
-      <p className="max-w-md text-gray-300">
+      <p className="max-w-md text-contrast">
         In a post-apocalyptic world where cities ride on wheel and consume each
         other to survive, two people meet in London and try to stop a conspiracy
       </p>

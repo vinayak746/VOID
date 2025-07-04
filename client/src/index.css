@@ -2,11 +2,22 @@
 
 @import 'tailwindcss';
 
-
+/* 
 @theme{
   --color-primary:#F84565;
   --color-primary-dull: #D63854
+} */
+ @theme {
+  --color-primary: #B3123C;           /* Weaver's Crimson */
+  --color-primary-dull: #8A0E2F;      /* Thread-Faded Crimson */
+  --color-accent: #6A3D9A;             /* Soulcore Violet */
+--color-muted: #222222;              /* Shadow Black */
+--color-background: #0A0A0A;         /* Deep Void */
+--color-contrast: #E8E8E8;           /* Pale Silver Text */
+--color-thread-glow: #FF004D;        /* Echo Thread Glow */
+
 }
+
 
 *{
   font-family: "Outfit", sans-serif;
