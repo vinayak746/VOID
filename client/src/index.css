@@ -17,6 +17,49 @@
 --color-thread-glow: #FF004D;        /* Echo Thread Glow */
 
 }
+/* Change color of Swiper navigation arrows */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #F84565; /* matches your --color-primary */
+  font-size: 1.8rem;
+  transition: color 0.3s ease;
+  z-index: 50;
+   text-shadow: 0 0 5px #F84565, 0 0 10px #F84565, 0 0 20px #F84565;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: #ff6f8c; /* brighter pink on hover */
+}
+
+/* Change color of pagination dots */
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: #F84565;
+  opacity: 1;
+  transform: scale(1.2);
+}
+/* Target the pseudo-elements that render the arrow icons */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: #F84565; /* Your primary pink */
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Optional: Hover glow effect */
+.swiper-button-next:hover::after,
+.swiper-button-prev:hover::after {
+  color: #ff6f8c;
+  text-shadow: 0 0 10px #F84565, 0 0 20px #F84565;
+}
+
+
 
 
 *{

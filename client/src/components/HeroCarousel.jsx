@@ -1,12 +1,13 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, EffectFade } from "swiper/modules";
+import { Navigation, EffectFade, Pagination } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, CalendarIcon, ClockIcon } from "lucide-react";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
+import "swiper/css/pagination"; // ✅ Important
 
 const HeroCarousel = () => {
   const navigate = useNavigate();
@@ -14,7 +15,8 @@ const HeroCarousel = () => {
   const movies = [
     {
       bg: "/gotg1.png",
-      title: "Guardians of the Galaxy",
+      titleTop: "Guardians",
+      titleBottom: "of the Galaxy",
       genre: "Action | Adventure | Sci‑Fi",
       year: "2014",
       time: "2h 1m",
@@ -23,7 +25,8 @@ const HeroCarousel = () => {
     },
     {
       bg: "/infinitywar.png",
-      title: "Avengers: Infinity War",
+      titleTop: "Avengers:",
+      titleBottom: "Infinity War",
       genre: "Action | Superhero | Thriller",
       year: "2018",
       time: "2h 29m",
@@ -32,7 +35,8 @@ const HeroCarousel = () => {
     },
     {
       bg: "/gotg3.png",
-      title: "Guardians of the Galaxy Vol. 3",
+      titleTop: "Guardians",
+      titleBottom: "of the Galaxy Vol. 3",
       genre: "Adventure | Comedy | Sci‑Fi",
       year: "2023",
       time: "2h 30m",
@@ -43,33 +47,30 @@ const HeroCarousel = () => {
 
   return (
     <Swiper
-      effect="fade"
+      modules={[EffectFade, Navigation, Pagination]}
+      pagination={{ clickable: true }}
       navigation
+      effect="fade"
       loop
-      modules={[EffectFade, Navigation]}
-      className="w-full h-screen"
+      className="w-full h-screen bg-primary relative"
     >
       {/* VOID INTRO SLIDE */}
-     <SwiperSlide>
-  <div
-    className="w-full h-screen bg-cover bg-center relative"
-    style={{ backgroundImage: `url("/void-bg.png")` }}
-  >
-    {/* Better overlay */}
-    <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-black/90 z-0" />
-
-    {/* VOID content */}
-    <div className="relative z-10 flex flex-col justify-center items-center h-full text-white text-center px-6">
-      <h1 className="text-[80px] md:text-[100px] font-extrabold tracking-wider drop-shadow-[0_0_20px_rgba(248,69,101,0.7)] animate-pulse leading-none">
-        VOID
-      </h1>
-      <p className="text-gray-300 text-lg mt-4 max-w-xl tracking-wide font-light italic">
-        Not all screens let you leave.
-      </p>
-    </div>
-  </div>
-</SwiperSlide>
-
+      <SwiperSlide>
+        <div
+          className="w-full h-screen bg-cover bg-center relative"
+          style={{ backgroundImage: `url("/void-bg.png")` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-black/90 z-0" />
+          <div className="relative z-10 flex flex-col justify-center items-center h-full text-white text-center px-6">
+            <h1 className="text-[80px] md:text-[100px] font-extrabold tracking-wider drop-shadow-[0_0_20px_rgba(248,69,101,0.7)] animate-pulse leading-none">
+              VOID
+            </h1>
+            <p className="text-gray-300 text-lg mt-4 max-w-xl tracking-wide font-light italic md:text-xl lg:text-2xl">
+              Not all screens let you leave.
+            </p>
+          </div>
+        </div>
+      </SwiperSlide>
 
       {/* MOVIE SLIDES */}
       {movies.map((m, i) => (
@@ -80,7 +81,7 @@ const HeroCarousel = () => {
           >
             <div className="absolute inset-0 bg-black/60 z-10 flex flex-col justify-center px-6 md:px-16 lg:px-36 gap-4 text-white">
               <h1 className="text-5xl md:text-[70px] font-bold leading-tight max-w-3xl">
-                {m.title}
+                {m.titleTop} <br /> {m.titleBottom}
               </h1>
               <div className="flex items-center gap-4 text-gray-300 text-sm">
                 <span>{m.genre}</span>
