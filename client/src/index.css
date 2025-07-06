@@ -59,6 +59,27 @@
   text-shadow: 0 0 10px #F84565, 0 0 20px #F84565;
 }
 
+@keyframes weaver-thread {
+  0% {
+    box-shadow: 0 0 0px rgba(248, 69, 101, 0);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(248, 69, 101, 0.4);
+  }
+}
+@keyframes floatThread {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.float-thread {
+  animation: floatThread 6s ease-in-out infinite;
+}
 
 
 

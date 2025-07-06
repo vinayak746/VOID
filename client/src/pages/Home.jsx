@@ -2,6 +2,7 @@ import React from "react";
 import HeroSection from "../components/HeroSection";
 import FeaturedSection from "../components/FeaturedSection";
 import HeroCarousel from "../components/HeroCarousel";
+import TrailersSection from "../components/TrailersSection";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       {/* <HeroSection /> */}
       <HeroCarousel/>
       <FeaturedSection />
+      <TrailersSection />
     </div>
   );
 };
