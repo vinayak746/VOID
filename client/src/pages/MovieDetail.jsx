@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 const MovieDetail = () => {
+  const {id}=useParams();
+  const [show, setShow]=useState(null);
+
+  const getShow = async ()=>{
+    
+  }
   return (
-    <div>MovieDetail</div>
+    <div>
+      
+      </div>
   )
 }
 
