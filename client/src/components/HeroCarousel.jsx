@@ -79,6 +79,14 @@ const HeroCarousel = () => {
             className="w-full h-screen bg-cover bg-center relative"
             style={{ backgroundImage: `url("${m.bg}")` }}
           >
+            {/* Add a preload image with loading="lazy" */}
+            <img 
+              src={m.bg} 
+              alt="" 
+              loading="lazy" 
+              className="hidden" 
+              aria-hidden="true"
+            />
             <div className="absolute inset-0 bg-black/60 z-10 flex flex-col justify-center px-6 md:px-16 lg:px-36 gap-4 text-white">
               <h1 className="text-5xl md:text-[70px] font-bold leading-tight max-w-3xl">
                 {m.titleTop} <br /> {m.titleBottom}

@@ -14,6 +14,7 @@ const MovieCard = ({ movie }) => {
         }}
         src={movie.backdrop_path}
         alt={movie.title}
+        loading="lazy"
         className="w-full h-52 object-cover rounded-lg object-right-bottom cursor-pointer"
       />
 

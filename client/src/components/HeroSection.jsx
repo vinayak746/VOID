@@ -10,6 +10,7 @@ const HeroSection = () => {
       <img
         src={assets.marvelLogo}
         alt="marvel logo"
+        loading="lazy"
         className="max-h-11 lg:h-11 mt-20"
       />
       <h1 className="text-5xl md:text-[70px] md:leading-18 font-semibold max-w-110">

@@ -51,6 +51,7 @@ const TrailersSection = () => {
             <img
               src={trailer.image}
               alt="trailer"
+              loading="lazy"
               className="rounded-xl w-full h-full object-cover z-0 relative"
             />
 

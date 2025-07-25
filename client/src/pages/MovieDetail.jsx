@@ -33,8 +33,8 @@ const MovieDetail = () => {
         <img
           src={show.movie.poster_path}
           alt=""
-          className="max-md:mx-auto rounded-xl h-104
-        max-w-70 object-cover"
+          loading="lazy"
+          className="max-md:mx-auto rounded-xl h-104 max-w-70 object-cover"
         />
         <div className="relative flex flex-col gap-3">
           <BlurCircle top="-100px" left="-100px" />
@@ -81,7 +81,12 @@ const MovieDetail = () => {
       <div className="overflow-x-auto no-scrollbar mt-8 pb-4">
         <div className="flex items-center gap-4 w-max px-4">
           {show.movie.casts.slice(0,12).map((cast,index)=>(<div key={index} className="flex flex-col items-center text-center">
-            <img src={cast.profile_path} alt="" className="rounded-full h-20 md:h-20 aspect-square object-cover"/>
+            <img 
+              src={cast.profile_path} 
+              alt="" 
+              loading="lazy" 
+              className="rounded-full h-20 md:h-20 aspect-square object-cover"
+            />
             <p className="font-medium text-xs mt-3">{cast.name}</p>
           </div>))}
         </div>
