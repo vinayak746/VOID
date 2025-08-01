@@ -4,35 +4,54 @@ import Loading from "../../components/Loading";
 import Title from "../../components/admin/Title";
 import { dateFormat } from "../../lib/dateFormat";
 
+const PAGE_SIZE = 1; // Number of shows per "page"
+
 const ListShows = () => {
   const currency = import.meta.env.VITE_CURRENCY;
 
   const [shows, setShows] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
 
-  const getAllShows = async () => {
+  // Simulate fetching paginated data
+  const getShowsPage = async (pageNum) => {
+    setLoading(true);
     try {
-      setShows([
-        {
-          movie: dummyShowsData[0],
-          showDateTime: "2025-07-25T02:00:00Z",
-          showPrice: 59,
-          occupiedSeats: {
-            A1: "user_1",
-            B1: "user_2",
-            C1: "user_3",
-          },
+      // Simulate paginated data from dummyShowsData
+      const start = (pageNum - 1) * PAGE_SIZE;
+      const end = start + PAGE_SIZE;
+      const pageData = dummyShowsData.slice(start, end).map((movie, i) => ({
+        movie,
+        showDateTime: "2025-07-25T02:00:00Z",
+        showPrice: 59,
+        occupiedSeats: {
+          A1: "user_1",
+          B1: "user_2",
+          C1: "user_3",
         },
-      ]);
-      setLoading(false);
+      }));
+      setShows((prev) => [...prev, ...pageData]);
+      setHasMore(end < dummyShowsData.length);
     } catch (error) {
       console.error("Error fetching shows:", error);
     }
+    setLoading(false);
   };
+
   useEffect(() => {
-    getAllShows();
-  }, []);
-  return !loading ? (
+    getShowsPage(page);
+    // eslint-disable-next-line
+  }, [page]);
+
+  // Lazy load more shows when "Load More" is clicked
+  const handleLoadMore = () => {
+    if (hasMore && !loading) {
+      setPage((prev) => prev + 1);
+    }
+  };
+
+  return (
     <>
       <Title text1="List" text2="Shows" />
       <div className="max-w-4xl mt-6 overflow-x-auto">
@@ -64,10 +83,17 @@ const ListShows = () => {
             ))}
           </tbody>
         </table>
+        {loading && <Loading />}
+        {!loading && hasMore && (
+          <button
+            className="mt-4 px-4 py-2 bg-primary text-white rounded"
+            onClick={handleLoadMore}
+          >
+            Load More
+          </button>
+        )}
       </div>
     </>
-  ) : (
-    <Loading />
   );
 };
 
