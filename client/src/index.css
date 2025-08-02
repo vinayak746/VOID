@@ -135,6 +135,7 @@
     opacity: 0.2;
   }
 }
+
 @keyframes pathPulse {
   0%, 100% {
     stroke-dasharray: 4, 2;
@@ -170,4 +171,12 @@ body{
 
 .no-scollbar{
   scrollbar-width: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  
+}
+::-webkit-calendar-picker-indicator {
+  filter: invert(1) ;
 }
