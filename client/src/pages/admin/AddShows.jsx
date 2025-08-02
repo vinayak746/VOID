@@ -3,7 +3,7 @@ import { dummyShowsData } from '../../assets/assets';
 import { useBeforeUnload } from 'react-router-dom';
 import Loading from '../../components/Loading';
 import Title from '../../components/admin/Title';
-import { CheckIcon, StarIcon } from 'lucide-react';
+import { CheckIcon, DeleteIcon, StarIcon } from 'lucide-react';
 import { kConvertor } from '../../lib/kConvertor';
 
 const AddShows = () => {
@@ -102,10 +102,30 @@ const AddShows = () => {
         </div>
         {/* Date and Time List */}
         {Object.keys(dateTimeSelection).length>0 &&(
-          <div>
-            
+          <div className='mt-6'>
+            <h2 className='mb-2'>Selected Date-Time</h2>
+            <ul className='space-y-3'>
+              {Object.entries(dateTimeSelection).map(([date, times])=>(
+                <li key={date}>
+                  <span className='font-medium'>{date}</span>
+                  <div className='flex flex-wrap gap-2 mt-1 text-sm'>
+                    {times.map((time)=>(
+                      <div key={time} className='border border-primary px-2 py-1 flex items-center rounded'>
+                        <span>{time}</span>
+                        <DeleteIcon onClick={()=>handleRemoveDateTime(date, time)} width={16} className='ml-2 text-red-500 cursor-pointer' />
+                      </div>
+                    ))}
+                  </div>
+                </li>
+              ))}
+
+            </ul>
+
           </div>
         )}
+        <button className='bg-primary text-white px-8 py-2 mt-6 rounded hover:bg-primary/90 transition-all cursor-pointer'>
+          Add Show
+        </button>
     </>
   ) : <Loading />
 
